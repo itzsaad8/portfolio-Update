@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {FaBars, FaTimes} from 'react-icons/fa'
+import {Link} from 'react-scroll'
 const Navbar = () => {
    const [nav ,setNav] = useState(false)
     const links = [
@@ -17,7 +18,7 @@ const Navbar = () => {
         },
         {
             id :4,
-            link :'experiance'
+            link :'skills'
         },
         {
             id :5,
@@ -33,7 +34,9 @@ const Navbar = () => {
         <ul className='hidden md:flex'>
             {
                 links.map(({id, link})=>(
-                    <li key={id} className='flex capitalize px-4 cursor-pointer font-medium text-gray-500 hover:scale-105 duration-200'>{link}</li>
+                    <li key={id} className='flex capitalize px-4 cursor-pointer font-medium text-gray-500 hover:font-bold hover:text-orange-400 duration-200'>
+                        <Link to={link} smooth duration={500}>{link}</Link>
+                    </li>
                 ))
             }
            
@@ -45,7 +48,7 @@ const Navbar = () => {
          <ul className='flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen  bg-gradient-to-b from-black to-gray-800 text-gray-500 '>
          {
                 links.map(({id, link})=>(
-                    <li key={id} className='px-4 cursor-pointer capitalize py-6 text-3xl '>{link}</li>
+                    <li key={id} className='px-4 cursor-pointer capitalize py-6 text-3xl '><Link onClick={()=> setNav(!nav)} to={link} smooth duration={500}>{link}</Link></li>
                 ))
             }
             {/* <li className='px-4 cursor-pointer capitalize py-6 text-4xl '>home</li> */}
